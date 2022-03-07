@@ -5,14 +5,14 @@
         <img src="logo.webp" alt="" height="240" />
       </div>
     </div>
-    <div v-if="loading == true" class="loading">
+    <div v-if="loading == true" class="loading" style="margin: 1% 0px 0px 46%">
       <half-circle-spinner
         :animation-duration="1000"
-        :size="60"
+        :size="120"
         color="#5e5b5b"
       />
     </div>
-    <div class="containerMid">
+    <div v-else class="containerMid">
       <div class="presentation">
         <div class="midText">
           <div class="title">Find the best price</div>
@@ -22,7 +22,29 @@
             <div><div>No Costs</div></div>
           </div>
         </div>
-        <img src="m4a4.webp" alt="m4a4" width="60%" />
+
+        <div class="imageEffect">
+          <div class="container__image">
+            <div class="container__info">
+              Lowest Price:
+              <span :style="{ color: price1 }">{{ neo.lowest_price }}</span>
+            </div>
+            <div class="container__info container__moreInfo">
+              Median Price:
+              <span :style="{ color: price2 }">{{ neo.median_price }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="cover atvImg">
+          <div
+            class="atvImg-layer"
+            data-img="http://robindelaporte.fr/codepen/visa-bg-2.jpg"
+          ></div>
+          <div
+            class="atvImg-layer"
+            data-img="http://robindelaporte.fr/codepen/visa.png"
+          ></div>
+        </div>
       </div>
       <div class="weapons">
         <div
@@ -43,7 +65,6 @@
                 "
                 alt="skin"
                 width="300"
-                height=""
               />
             </div>
             <div class="cardContent">
@@ -76,23 +97,16 @@ export default {
   data() {
     return {
       skins: [],
+      neo: [],
+      price1: "#d63031",
+      price2: "#009f16",
       loading: false,
-      phrase: ["Market Overview", "salve", "breno", "careca"],
     };
   },
   created() {
     this.fetchData();
   },
-  mounted() {
-    window.setInterval(() => {
-      this.changePhrase();
-      // if (this.phraseAux === true) {
-      //   this.phraseAux = false;
-      // } else {
-      //   this.phraseAux = true;
-      // }
-    }, 3000);
-  },
+
   methods: {
     async fetchData() {
       this.loading = true;
@@ -101,17 +115,20 @@ export default {
           "https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&sort_column=default&sort_dir=desc&appid=730&norender=1&count=50"
         );
 
+        const responseNeo = await fetch(
+          "https://skinky.herokuapp.com/https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=M4A4%20|%20Neo-Noir%20%28Field-Tested%29"
+        );
+
         this.skins = await response.json();
+        this.neo = await responseNeo.json();
+        if (this.neo.lowest_price < this.neo.median_price) {
+          this.price1 = "#009f16";
+          this.price2 = "#d63031";
+        }
         this.loading = false;
       } catch (error) {
         console.log(error);
       }
-    },
-    changePhrase() {
-      const textDiv = document.getElementById("subTitle");
-      const current = this.phrase.shift();
-      this.phrase = this.phrase.concat(current);
-      // textDiv.style.transform = "rotate(30deg)";
     },
   },
 };
