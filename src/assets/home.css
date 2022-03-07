@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap");
+
+.containerTop {
+  display: flex;
+  background-image: linear-gradient(
+      to bottom,
+      transparent 75%,
+      rgba(24, 24, 24)
+    ),
+    url("div1.webp");
+  background-size: cover;
+  width: 100vw;
+  height: 80vh;
+  justify-content: flex-end;
+}
+
+.topText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10%;
+  color: white;
+}
+
+.title {
+  font-size: 70px;
+  line-height: 90px;
+}
+
+.subTitle {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  font-family: "Shippori Antique B1", sans-serif;
+  font-size: 25px;
+}
+
+.containerMid {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* background-color: #ff4757; */
+  margin-top: 5%;
+}
+
+.presentation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.midText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.weapons {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.containerCards {
+  padding: 10px;
+}
+
+.card {
+  width: 300px;
+  height: 350px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #252525;
+  color: white;
+}
+
+.cardImage {
+  background-color: #2b2b2b;
+  border-radius: 12px 12px 0 0;
+  background-size: cover;
+}
+
+.cardImageCover {
+  background-size: cover;
+}
+
+.cardContent {
+  padding: 8px;
+}
+
+.container3 {
+  display: flex;
+  background-image: url("hyper.webp");
+  background-size: cover;
+  width: 100vw;
+  height: 60vh;
+  justify-content: flex-end;
+  background-attachment: fixed;
+  align-items: center;
+  color: #fff;
+}
+
+#flip {
+  height: 50px;
+  overflow: hidden;
+  font-size: 27px;
+}
+
+#flip > div > div {
+  color: #fff;
+  height: 45px;
+  margin-bottom: 45px;
+  display: inline-block;
+}
+
+#flip div:first-child {
+  animation: show 6s linear infinite;
+}
+
+@keyframes show {
+  0% {
+    margin-top: -270px;
+  }
+  5% {
+    margin-top: -180px;
+  }
+  33% {
+    margin-top: -180px;
+  }
+  38% {
+    margin-top: -90px;
+  }
+  66% {
+    margin-top: -90px;
+  }
+  71% {
+    margin-top: 0px;
+  }
+  99.99% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: -270px;
+  }
+}
