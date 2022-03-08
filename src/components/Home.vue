@@ -5,7 +5,7 @@
   <section>
     <div class="containerTop">
       <div class="topText">
-        <img src="logo.webp" alt="" height="240" />
+        <img src="logo.webp" alt="logo" class="sliderImages" />
       </div>
     </div>
     <div v-if="loading == true" class="loading" style="margin: 1% 0px 0px 46%">
@@ -24,6 +24,7 @@
             <div><div>Easy Search</div></div>
             <div><div>No Costs</div></div>
           </div>
+          <button class="btnMarket">Get Started</button>
         </div>
 
         <div class="imageEffect">
@@ -94,31 +95,26 @@
       <div class="bottomText">
         <h1 class="title">Make Sure it worths</h1>
         <div class="subTitle">To low and High tiers</div>
+        <button class="btnMarket">Go to Market</button>
       </div>
       <div class="containerBottomRight">
         <img
+          class="sliderImages"
           v-if="slider >= 70"
           src="karambit.webp"
           alt="karambit"
-          height="300"
-          width="450"
-          style="object-fit: cover"
         />
         <img
           v-else-if="slider > 30 && slider < 70"
+          class="sliderImages"
           src="ak.webp"
-          alt="karambit"
-          height="300"
-          width="450"
-          style="object-fit: cover"
+          alt="ak"
         />
         <img
           v-else-if="slider < 70"
+          class="sliderImages"
           src="glock.webp"
-          alt="karambit"
-          height="300"
-          width="450"
-          style="object-fit: cover"
+          alt="glock"
         />
         <div class="sliderContainer">
           <input
@@ -129,7 +125,6 @@
             class="slider"
             id="myRange"
           />
-          {{ slider }}
         </div>
       </div>
     </div>

@@ -38,6 +38,21 @@
   color: white;
 }
 
+.btnMarket {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 40px;
+  margin-top: 12px;
+  background-color: #009f16;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-size: large;
+}
+
 .containerMid {
   display: flex;
   flex-direction: column;
@@ -65,6 +80,7 @@
   display: flex;
   align-items: center;
   overflow-x: auto;
+  margin-bottom: 10px;
 }
 .weapons::-webkit-scrollbar {
   width: 12px;
@@ -143,13 +159,17 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 10vh;
 }
 
 .containerBottomRight {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.sliderImages {
+  width: 30vw;
+  object-fit: scale-down;
 }
 
 #flip {
@@ -294,4 +314,52 @@
   border-radius: 50%;
   background: #009f16;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .containerTop {
+    display: flex;
+    justify-content: center;
+    background-position: center;
+  }
+
+  .topText {
+    margin-right: 0;
+  }
+
+  .presentation {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .midText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container__image {
+    width: 80vw;
+    height: 50vh;
+  }
+
+  .containerParallax {
+    display: none;
+  }
+
+  .containerBottom {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 20px;
+  }
+
+  .sliderImages {
+    width: 60vw;
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  .imageEffect {
+    display: none;
+  }
 }
