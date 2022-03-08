@@ -7,7 +7,7 @@
       transparent 75%,
       rgba(24, 24, 24)
     ),
-    url("div1.webp");
+    url("/div1.webp");
   background-size: cover;
   width: 100vw;
   height: 90vh;
@@ -139,7 +139,7 @@
 
 .containerParallax {
   display: flex;
-  background-image: url("hyper.webp");
+  background-image: url("/hyper.webp");
   background-size: cover;
   width: 100vw;
   height: 60vh;
@@ -230,7 +230,7 @@
   justify-content: center;
   width: 50vw;
   height: 45vh;
-  background-image: url(m4a4.webp);
+  background-image: url("/m4a4.webp");
   background-size: contain;
   background-repeat: no-repeat;
   transition: ease-in-out 0.3s;
