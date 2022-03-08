@@ -5,7 +5,7 @@
   <section>
     <div class="containerTop">
       <div class="topText">
-        <img src="logo.webp" alt="logo" class="sliderImages" />
+        <img src="/logo.webp" alt="logo" class="sliderImages" />
       </div>
     </div>
     <div v-if="loading == true" class="loading" style="margin: 1% 0px 0px 46%">
@@ -101,19 +101,19 @@
         <img
           class="sliderImages"
           v-if="slider >= 70"
-          src="karambit.webp"
+          src="/karambit.webp"
           alt="karambit"
         />
         <img
           v-else-if="slider > 30 && slider < 70"
           class="sliderImages"
-          src="ak.webp"
+          src="/ak.webp"
           alt="ak"
         />
         <img
           v-else-if="slider < 70"
           class="sliderImages"
-          src="glock.webp"
+          src="/glock.webp"
           alt="glock"
         />
         <div class="sliderContainer">
