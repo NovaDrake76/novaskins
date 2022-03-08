@@ -11,6 +11,7 @@
     "epic-spinners": "^1.1.0",
     "vue": "^3.2.31",
     "vue-axios-cors": "^1.0.1",
+    "vue-material-design-icons": "^5.0.0",
     "vue-parallax-js": "^0.2.3"
   },
   "devDependencies": {

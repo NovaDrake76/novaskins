@@ -1,4 +1,7 @@
 <template>
+  <link rel="preload" as="image" href="glock.webp" />
+  <link rel="preload" as="image" href="ak.webp" />
+
   <section>
     <div class="containerTop">
       <div class="topText">
@@ -79,11 +82,57 @@
           </div>
         </div>
       </div>
+      <div class="degrade" />
     </div>
-    <!-- <div class="container3">
-      <h1 class="title" style="margin-right: 10%">The Best Skins</h1>
+    <div class="containerParallax">
+      <h1 class="titleParallax" style="margin-right: 10%">
+        Track the <br />
+        bests discounts
+      </h1>
     </div>
-    <div class="containerBottom"></div> -->
+    <div class="containerBottom">
+      <div class="bottomText">
+        <h1 class="title">Make Sure it worths</h1>
+        <div class="subTitle">To low and High tiers</div>
+      </div>
+      <div class="containerBottomRight">
+        <img
+          v-if="slider >= 70"
+          src="karambit.webp"
+          alt="karambit"
+          height="300"
+          width="450"
+          style="object-fit: cover"
+        />
+        <img
+          v-else-if="slider > 30 && slider < 70"
+          src="ak.webp"
+          alt="karambit"
+          height="300"
+          width="450"
+          style="object-fit: cover"
+        />
+        <img
+          v-else-if="slider < 70"
+          src="glock.webp"
+          alt="karambit"
+          height="300"
+          width="450"
+          style="object-fit: cover"
+        />
+        <div class="sliderContainer">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            v-model="slider"
+            class="slider"
+            id="myRange"
+          />
+          {{ slider }}
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -101,6 +150,7 @@ export default {
       price1: "#d63031",
       price2: "#009f16",
       loading: false,
+      slider: 80,
     };
   },
   created() {
@@ -129,6 +179,10 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    moveDiv() {
+      const weapons = document.getElementById("weapons");
+      weapons.style.transform = "translateX(-200px)";
     },
   },
 };

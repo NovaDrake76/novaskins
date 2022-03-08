@@ -26,6 +26,7 @@
 .title {
   font-size: 70px;
   line-height: 90px;
+  color: white;
 }
 
 .subTitle {
@@ -34,6 +35,7 @@
   align-self: flex-start;
   font-family: "Shippori Antique B1", sans-serif;
   font-size: 25px;
+  color: white;
 }
 
 .containerMid {
@@ -61,8 +63,35 @@
 
 .weapons {
   display: flex;
-  flex-wrap: nowrap;
+  align-items: center;
   overflow-x: auto;
+}
+.weapons::-webkit-scrollbar {
+  width: 12px;
+}
+
+.weapons::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.weapons::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(65, 61, 61, 0.5);
+}
+
+.weapons:after {
+  float: right;
+}
+
+.degrade {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 98%;
+  background: linear-gradient(to right, transparent 90%, #181818);
 }
 
 .containerCards {
@@ -92,7 +121,7 @@
   padding: 8px;
 }
 
-.container3 {
+.containerParallax {
   display: flex;
   background-image: url("hyper.webp");
   background-size: cover;
@@ -102,6 +131,25 @@
   background-attachment: fixed;
   align-items: center;
   color: #fff;
+}
+
+.titleParallax {
+  font-size: 90px;
+  text-align: end;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.containerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10vh;
+}
+
+.containerBottomRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #flip {
@@ -216,4 +264,34 @@
 .price:hover {
   background-color: #06c0a8;
   color: #fff;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #009f16;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #009f16;
+  cursor: pointer;
 }
