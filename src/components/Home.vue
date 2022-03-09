@@ -1,6 +1,7 @@
 <template>
-  <link rel="preload" as="image" href="glock.webp" />
-  <link rel="preload" as="image" href="ak.webp" />
+  <link rel="preload" as="image" href="/ak1.webp" />
+  <link rel="preload" as="image" href="/ak2.webp" />
+  <link rel="preload" as="image" href="/ak3.webp" />
 
   <section>
     <div class="containerTop">
@@ -24,7 +25,7 @@
             <div><div>Easy Search</div></div>
             <div><div>No Costs</div></div>
           </div>
-          <button class="btnMarket">Get Started</button>
+          <a href="#/market"> <button class="btnMarket">Get Started</button></a>
         </div>
 
         <div class="imageEffect">
@@ -95,25 +96,25 @@
       <div class="bottomText">
         <h1 class="title">Make Sure it worths</h1>
         <div class="subTitle">To low and High tiers</div>
-        <button class="btnMarket">Go to Market</button>
+        <a href="#/market"> <button class="btnMarket">Go to Market</button></a>
       </div>
       <div class="containerBottomRight">
         <img
           class="sliderImages"
           v-if="slider >= 70"
-          src="/karambit.webp"
+          src="/ak3.webp"
           alt="karambit"
         />
         <img
           v-else-if="slider > 30 && slider < 70"
           class="sliderImages"
-          src="/ak.webp"
+          src="/ak2.webp"
           alt="ak"
         />
         <img
           v-else-if="slider < 70"
           class="sliderImages"
-          src="/glock.webp"
+          src="/ak1.webp"
           alt="glock"
         />
         <div class="sliderContainer">

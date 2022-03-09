@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap");
 
+a {
+  text-decoration: none;
+  border: none;
+  align-self: flex-start;
+}
+
 .containerTop {
   display: flex;
   background-image: linear-gradient(
@@ -103,11 +109,10 @@
 .degrade {
   position: absolute;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
+  align-self: flex-end;
+  width: 10%;
   height: 98%;
-  background: linear-gradient(to right, transparent 90%, #181818);
+  background: linear-gradient(to right, transparent 10%, #181818);
 }
 
 .containerCards {
@@ -159,6 +164,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-top: 10px;
 }
 
 .containerBottomRight {
@@ -355,6 +361,7 @@
 
   .sliderImages {
     width: 60vw;
+    height: 70vw;
   }
 }
 
