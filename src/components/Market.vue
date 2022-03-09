@@ -7,10 +7,34 @@
         <div class="userContent">Notificações, carrinho, saldo, user</div>
       </div>
       <div class="marketMid">
-        <div class="sidebar">
-          <button>a</button>
-          <button>b</button>
-          <button>c</button>
+        <div class="sidebarContainer">
+          <div class="sidebar">
+            <div class="priceFilter">
+              <input
+                type="number"
+                class="priceFilterInput"
+                min="1"
+                step="any"
+                placeholder="min"
+              />
+              <div>-</div>
+              <input
+                type="number"
+                class="priceFilterInput"
+                min="1"
+                step="any"
+                placeholder="max"
+              />
+            </div>
+            <button class="sidebarButton">Knifes</button>
+            <button class="sidebarButton">Gloves</button>
+            <button class="sidebarButton">Rifles</button>
+            <button class="sidebarButton">Pistols</button>
+            <button class="sidebarButton">SMG</button>
+            <button class="sidebarButton">Shotguns</button>
+            <button class="sidebarButton">Stickers</button>
+            <button class="sidebarButton">Agents</button>
+          </div>
         </div>
         <div
           v-if="loading == true"
@@ -107,6 +131,16 @@ export default {
 <style>
 @import url("../assets/home.css");
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .market {
   display: flex;
   flex-direction: column;
@@ -128,11 +162,17 @@ export default {
   color: white;
   border: none;
   border-radius: 4px;
+  outline: none;
 }
 
 .marketMid {
   display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 95%;
   height: 100%;
+  background-color: #141414;
+  border-radius: 8px;
 }
 
 .skinsContainer {
@@ -143,6 +183,7 @@ export default {
   height: 100%;
   overflow-y: auto;
   scrollbar-color: gray;
+  margin-top: 10px;
 }
 
 .skinsContainer::-webkit-scrollbar {
@@ -176,11 +217,41 @@ export default {
   object-fit: scale-down;
 }
 
-.sidebar {
+.sidebarContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 15vw;
-  background-color: #141414;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.priceFilter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.priceFilterInput {
+  width: 35%;
+  background-color: #252525;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+.sidebarButton {
+  width: 80%;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  color: white;
 }
 </style>
