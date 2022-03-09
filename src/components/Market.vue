@@ -2,7 +2,7 @@
   <section>
     <div class="market">
       <div class="marketTop">
-        <img src="logo.webp" alt="logo" width="150" />
+        <a href="#/"><img src="logo.webp" alt="logo" width="150" /></a>
         <input class="marketSearch" type="text" placeholder="Search" />
         <div class="userContent">Notificações, carrinho, saldo, user</div>
       </div>
@@ -12,11 +12,47 @@
           <button>b</button>
           <button>c</button>
         </div>
-        <div class="skinsContainer">
+        <div
+          v-if="loading == true"
+          class="loading"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          "
+        >
+          <half-circle-spinner
+            :animation-duration="1000"
+            :size="120"
+            color="#5e5b5b"
+          />
+        </div>
+        <div v-else class="skinsContainer">
           <div class="skins" v-for="skin in skins.results" :key="skin">
-            {{ skin.sell_listings }}
-            {{ skin.name }}
-            {{ skin.sell_price_text }}
+            <div class="cardSkins">
+              <div class="cardImage">
+                <img
+                  class="cardImageCover"
+                  v-bind:src="
+                    'https://community.akamai.steamstatic.com/economy/image/' +
+                    skin.asset_description.icon_url +
+                    '/fxf'
+                  "
+                  alt="skin"
+                  style="object-fit: scale-down"
+                />
+              </div>
+              <div class="cardContent">
+                <h3>{{ skin.name }}</h3>
+                <p>
+                  Listings: <b>{{ skin.sell_listings }}</b>
+                </p>
+                <p>
+                  Starting at: <b>{{ skin.sell_price_text }}</b>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,7 +82,7 @@ export default {
       this.loading = true;
       try {
         const response = await fetch(
-          "https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&sort_column=default&sort_dir=desc&appid=730&norender=1&count=50"
+          "https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&appid=730&norender=1&count=500"
         );
 
         const responseNeo = await fetch(
@@ -69,6 +105,8 @@ export default {
 </script>
 
 <style>
+@import url("../assets/home.css");
+
 .market {
   display: flex;
   flex-direction: column;
@@ -103,11 +141,39 @@ export default {
   flex-wrap: wrap;
   width: 80vw;
   height: 100%;
+  overflow-y: auto;
+  scrollbar-color: gray;
+}
+
+.skinsContainer::-webkit-scrollbar {
+  width: 12px;
+  scrollbar-color: gray;
+  color: gray;
+}
+
+.skinsContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.skinsContainer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #434348;
 }
 
 .skins {
   display: flex;
-  border: 1px solid red;
+  padding-bottom: 10px;
+}
+
+.cardSkins {
+  width: 260px;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #252525;
+  color: white;
+  object-fit: scale-down;
 }
 
 .sidebar {

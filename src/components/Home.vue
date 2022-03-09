@@ -9,7 +9,7 @@
         <img src="/logo.webp" alt="logo" class="sliderImages" />
       </div>
     </div>
-    <div v-if="loading == true" class="loading" style="margin: 1% 0px 0px 46%">
+    <div v-if="loading == true" class="loading" style="margin: 1% 0px 1% 46%">
       <half-circle-spinner
         :animation-duration="1000"
         :size="120"
