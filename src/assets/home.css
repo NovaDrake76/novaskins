@@ -135,6 +135,10 @@ a {
   text-align: center;
 }
 
+.cardImage:hover {
+  background-color: #494949;
+}
+
 .cardImageCover {
   width: 15vw;
   object-fit: scale-down;
@@ -146,7 +150,7 @@ a {
 
 .containerParallax {
   display: flex;
-  background-image: url("/hyper.webp");
+  background-image: url("/parallax.webp");
   background-size: cover;
   width: 100vw;
   height: 60vh;

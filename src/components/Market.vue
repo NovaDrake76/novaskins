@@ -3,13 +3,16 @@
     <div class="market">
       <div class="marketTop">
         <a href="#/"><img src="/logo.webp" alt="logo" width="150" /></a>
-        <input
-          v-model="search"
-          @change="fetchData()"
-          class="marketSearch"
-          type="text"
-          placeholder="Search"
-        />
+        <div class="inputContainer">
+          <magnify style="display: flex; align-self: center; padding: 5px" />
+          <input
+            v-model="search"
+            @change="fetchData()"
+            class="marketSearch"
+            type="text"
+            placeholder="Search"
+          />
+        </div>
         <div class="userContent">
           <bell-outline /> <cart-outline />
           <img src="/avatar.webp" alt="user avatar" class="userAvatar" />
@@ -145,12 +148,14 @@
 import { HalfCircleSpinner } from "epic-spinners";
 import BellOutline from "vue-material-design-icons/BellOutline.vue";
 import CartOutline from "vue-material-design-icons/CartOutline.vue";
+import Magnify from "vue-material-design-icons/Magnify.vue";
 
 export default {
   components: {
     HalfCircleSpinner,
     BellOutline,
     CartOutline,
+    Magnify,
   },
   data() {
     return {
@@ -162,7 +167,7 @@ export default {
       pistolsURL: "CSGO_Type_Pistol",
       smgURL: "CSGO_Type_SMG",
       shotgunsURL: "CSGO_Type_Shotgun",
-      stickersURL: "CSGO_Tool_Patch",
+      stickersURL: "CSGO_Tool_Sticker",
       agentsURL: "Type_CustomPlayer",
       search: "",
     };
@@ -229,14 +234,22 @@ input[type="number"] {
   justify-content: space-around;
 }
 
-.marketSearch {
+.inputContainer {
   width: 40%;
   height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #44444b;
+  border-radius: 4px;
+}
+
+.marketSearch {
+  width: 100%;
   color: white;
   border: none;
-  border-radius: 4px;
   outline: none;
+  background-color: transparent;
 }
 
 .userContent {
@@ -248,8 +261,8 @@ input[type="number"] {
 }
 
 .userAvatar {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
   object-fit: cover;
 }

@@ -10,11 +10,7 @@
       </div>
     </div>
     <div v-if="loading == true" class="loading" style="margin: 1% 0px 1% 46%">
-      <half-circle-spinner
-        :animation-duration="1000"
-        :size="120"
-        color="#5e5b5b"
-      />
+      <atom-spinner :animation-duration="1000" :size="120" color="#009f16" />
     </div>
     <div v-else>
       <div class="containerMid">
@@ -135,11 +131,12 @@
 </template>
 
 <script>
-import { HalfCircleSpinner } from "epic-spinners";
+import { HalfCircleSpinner, AtomSpinner } from "epic-spinners";
 
 export default {
   components: {
     HalfCircleSpinner,
+    AtomSpinner,
   },
   data() {
     return {
