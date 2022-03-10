@@ -2,7 +2,7 @@
   <section>
     <div class="market">
       <div class="marketTop">
-        <a href="#/"><img src="logo.webp" alt="logo" width="150" /></a>
+        <a href="#/"><img src="/logo.webp" alt="logo" width="150" /></a>
         <input
           v-model="search"
           @change="fetchData()"
