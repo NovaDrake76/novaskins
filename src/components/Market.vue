@@ -3,37 +3,90 @@
     <div class="market">
       <div class="marketTop">
         <a href="#/"><img src="logo.webp" alt="logo" width="150" /></a>
-        <input class="marketSearch" type="text" placeholder="Search" />
+        <input
+          v-model="search"
+          @change="fetchData()"
+          class="marketSearch"
+          type="text"
+          placeholder="Search"
+        />
         <div class="userContent">Notificações, carrinho, saldo, user</div>
       </div>
       <div class="marketMid">
         <div class="sidebarContainer">
           <div class="sidebar">
             <div class="priceFilter">
-              <input
-                type="number"
-                class="priceFilterInput"
-                min="1"
-                step="any"
-                placeholder="min"
-              />
-              <div>-</div>
-              <input
-                type="number"
-                class="priceFilterInput"
-                min="1"
-                step="any"
-                placeholder="max"
-              />
+              <div class="priceFilterContent">
+                <span>$</span>
+                <input
+                  type="number"
+                  class="priceFilterInput"
+                  min="1"
+                  step="any"
+                  placeholder="min"
+                />
+              </div>
+              <div style="padding: 0 10px 0 10px">-</div>
+              <div class="priceFilterContent">
+                <span>$</span>
+
+                <input
+                  type="number"
+                  class="priceFilterInput"
+                  min="1"
+                  step="any"
+                  placeholder="max"
+                />
+              </div>
             </div>
-            <button class="sidebarButton">Knifes</button>
-            <button class="sidebarButton">Gloves</button>
-            <button class="sidebarButton">Rifles</button>
-            <button class="sidebarButton">Pistols</button>
-            <button class="sidebarButton">SMG</button>
-            <button class="sidebarButton">Shotguns</button>
-            <button class="sidebarButton">Stickers</button>
-            <button class="sidebarButton">Agents</button>
+            <button
+              class="sidebarButton"
+              @click="(url = knifeURL), fetchDataFiltered()"
+            >
+              Knifes
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = glovesURL), fetchDataFiltered()"
+            >
+              Gloves
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = riflesURL), fetchDataFiltered()"
+            >
+              Rifles
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = pistolsURL), fetchDataFiltered()"
+            >
+              Pistols
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = smgURL), fetchDataFiltered()"
+            >
+              SMG
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = shotgunsURL), fetchDataFiltered()"
+            >
+              Shotguns
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = stickersURL), fetchDataFiltered()"
+            >
+              Stickers
+            </button>
+            <button
+              class="sidebarButton"
+              @click="(url = agentsURL), fetchDataFiltered()"
+            >
+              Agents
+            </button>
           </div>
         </div>
         <div
@@ -95,6 +148,16 @@ export default {
     return {
       skins: [],
       loading: false,
+      url: "?search_descriptions=0",
+      knifeURL: `CSGO_Type_Knife`,
+      glovesURL: `Type_Hands`,
+      riflesURL: "CSGO_Type_Rifle",
+      pistolsURL: "CSGO_Type_Pistol",
+      smgURL: "CSGO_Type_SMG",
+      shotgunsURL: "CSGO_Type_Shotgun",
+      stickersURL: "CSGO_Tool_Patch",
+      agentsURL: "Type_CustomPlayer",
+      search: "",
     };
   },
   created() {
@@ -106,19 +169,23 @@ export default {
       this.loading = true;
       try {
         const response = await fetch(
-          "https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&appid=730&norender=1&count=500"
-        );
-
-        const responseNeo = await fetch(
-          "https://skinky.herokuapp.com/https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=M4A4%20|%20Neo-Noir%20%28Field-Tested%29"
+          `https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/${this.url}&appid=730&norender=1&count=500`
         );
 
         this.skins = await response.json();
-        this.neo = await responseNeo.json();
-        if (this.neo.lowest_price < this.neo.median_price) {
-          this.price1 = "#009f16";
-          this.price2 = "#d63031";
-        }
+        this.loading = false;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async fetchDataFiltered() {
+      this.loading = true;
+      try {
+        const responseFilteder = await fetch(
+          `https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/search?&category_730_ItemSet%5B%5D=any&category_730_ProPlayer%5B%5D=any&category_730_StickerCapsule%5B%5D=any&category_730_TournamentTeam%5B%5D=any&category_730_Weapon%5B%5D=any&category_730_Type%5B%5D=tag_${this.url}&norender=1&count=500`
+        );
+
+        this.skins = await responseFilteder.json();
         this.loading = false;
       } catch (error) {
         console.log(error);
@@ -238,10 +305,16 @@ input[type="number"] {
   width: 100%;
 }
 
-.priceFilterInput {
-  width: 35%;
+.priceFilterContent {
   background-color: #252525;
   border-radius: 4px;
+  padding-left: 4px;
+  width: 35%;
+}
+
+.priceFilterInput {
+  width: 75%;
+  background-color: transparent;
   border: none;
   color: white;
   outline: none;
@@ -252,6 +325,10 @@ input[type="number"] {
   height: 40px;
   background-color: transparent;
   border: none;
+  color: #bcbcc2;
+}
+
+.sidebarButton:hover {
   color: white;
 }
 </style>
