@@ -10,7 +10,10 @@
           type="text"
           placeholder="Search"
         />
-        <div class="userContent">Notificações, carrinho, saldo, user</div>
+        <div class="userContent">
+          <bell-outline /> <cart-outline />
+          <img src="/avatar.webp" alt="user avatar" class="userAvatar" />
+        </div>
       </div>
       <div class="marketMid">
         <div class="sidebarContainer">
@@ -96,7 +99,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            width: 80vw;
+            height: 100%;
           "
         >
           <half-circle-spinner
@@ -139,16 +143,19 @@
 
 <script>
 import { HalfCircleSpinner } from "epic-spinners";
+import BellOutline from "vue-material-design-icons/BellOutline.vue";
+import CartOutline from "vue-material-design-icons/CartOutline.vue";
 
 export default {
   components: {
     HalfCircleSpinner,
+    BellOutline,
+    CartOutline,
   },
   data() {
     return {
       skins: [],
       loading: false,
-      url: "?search_descriptions=0",
       knifeURL: `CSGO_Type_Knife`,
       glovesURL: `Type_Hands`,
       riflesURL: "CSGO_Type_Rifle",
@@ -169,7 +176,7 @@ export default {
       this.loading = true;
       try {
         const response = await fetch(
-          `https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/${this.url}&appid=730&norender=1&count=500`
+          `https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&appid=730&norender=1&count=500`
         );
 
         this.skins = await response.json();
@@ -230,6 +237,21 @@ input[type="number"] {
   border: none;
   border-radius: 4px;
   outline: none;
+}
+
+.userContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 10%;
+  height: 100%;
+}
+
+.userAvatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  object-fit: cover;
 }
 
 .marketMid {
