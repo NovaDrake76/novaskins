@@ -7,7 +7,6 @@
     "preview": "vite preview --port 5050"
   },
   "dependencies": {
-    "@vueuse/gesture": "^2.0.0-beta.1",
     "@vueuse/motion": "^2.0.0-beta.9",
     "cors": "^2.8.5",
     "epic-spinners": "^1.1.0",

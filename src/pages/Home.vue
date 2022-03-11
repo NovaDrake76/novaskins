@@ -1,7 +1,6 @@
 <template>
-  <link rel="preload" as="image" href="/ak1.webp" />
-  <link rel="preload" as="image" href="/ak2.webp" />
-  <link rel="preload" as="image" href="/ak3.webp" />
+  <link rel="preload" href="/ak1.webp" as="image" />
+  <link rel="preload" href="/ak2.webp" as="image" />
 
   <section>
     <div class="containerTop">
@@ -9,9 +8,11 @@
         <img src="/logo.webp" alt="logo" class="sliderImages" />
       </div>
     </div>
+
     <div v-if="loading == true" class="loading" style="margin: 1% 0px 1% 46%">
       <atom-spinner :animation-duration="1000" :size="120" color="#009f16" />
     </div>
+
     <div v-else>
       <div class="containerMid">
         <div class="presentation">
@@ -46,7 +47,7 @@
             </div>
           </div>
         </div>
-        <div class="weapons" ref="demo" v-drag="dragHandler">
+        <div class="weapons">
           <div
             class="containerCards"
             v-for="skin in skins.results"
@@ -89,76 +90,78 @@
         </div>
       </div>
       <div class="containerBottom">
-        <div class="bottomText">
-          <h1 class="title">Make Sure it worths</h1>
-          <div class="subTitle">To low and High tiers</div>
-          <a href="#/market">
-            <button class="btnMarket">Go to Market</button></a
-          >
+        <div class="BottomInfo">
+          <div class="bottomText">
+            <h1 class="title">Make Sure it worths</h1>
+            <div class="subTitle">To low and High tiers</div>
+            <a href="#/market">
+              <button class="btnMarket">Go to Market</button></a
+            >
+          </div>
+          <div class="containerBottomRight">
+            <div v-if="slider >= 70">
+              <img class="sliderImages" src="/ak3.webp" alt="ak3" />
+              <div class="sliderMoney">$$$</div>
+            </div>
+            <div v-else-if="slider > 30 && slider < 70">
+              <img class="sliderImages" src="/ak2.webp" alt="ak2" />
+              <div class="sliderMoney">$$</div>
+            </div>
+            <div v-else-if="slider < 70">
+              <img class="sliderImages" src="/ak1.webp" alt="ak" />
+              <div class="sliderMoney">$</div>
+            </div>
+
+            <div class="sliderContainer">
+              <input
+                type="range"
+                min="1"
+                max="100"
+                v-model="slider"
+                class="slider"
+                id="myRange"
+              />
+            </div>
+          </div>
         </div>
-        <div class="containerBottomRight">
-          <img
-            class="sliderImages"
-            v-if="slider >= 70"
-            src="/ak3.webp"
-            alt="ak3"
-          />
-          <img
-            v-else-if="slider > 30 && slider < 70"
-            class="sliderImages"
-            src="/ak2.webp"
-            alt="ak2"
-          />
-          <img
-            v-else-if="slider < 70"
-            class="sliderImages"
-            src="/ak1.webp"
-            alt="ak"
-          />
-          <div class="sliderContainer">
-            <input
-              type="range"
-              min="1"
-              max="100"
-              v-model="slider"
-              class="slider"
-              id="myRange"
-            />
+        <div class="sellInfo">
+          <img class="sellImage" src="/karambit.webp" alt="karambit" />
+          <div class="midText">
+            <h1 class="title">Sell? Hold?</h1>
+            <div class="subTitleRight">
+              Tired of buying in high and selling in low? <br />
+              Let our market analyzer help you!
+            </div>
           </div>
         </div>
       </div>
+      <footer>
+        <div class="footerTop">
+          <img class="logoFooter" src="/logo.webp" alt="logo" />
+          <p style="font-weight: bold">
+            NOVASKINS - Market overview - Skins upgrade - Sell info
+          </p>
+        </div>
+        <div class="footerBottom">
+          <div>a</div>
+          <div>b</div>
+          <div>c</div>
+          <div>d</div>
+          <div>e</div>
+        </div>
+        <div class="footerEnd">
+          NovaSkins Comercio De Jogos E Skins Ltda - CNPJ: 40.981.116/0001-73 ©
+          All Rights Reserved. {{ year }}
+        </div>
+      </footer>
     </div>
   </section>
 </template>
 
 <script>
 import { HalfCircleSpinner, AtomSpinner } from "epic-spinners";
-import { dragDirective, useDrag } from "@vueuse/gesture";
-import { ref } from "vue";
 
-const demo = ref();
-
-const dragHandler = ({ movement: [x, y], dragging }) => {
-  if (!dragging) {
-    set({ x: 0, y: 0, cursor: "grab" });
-    return;
-  }
-
-  set({
-    cursor: "grabbing",
-    x,
-    y,
-  });
-};
-
-// Composable usage
-useDrag(dragHandler, {
-  domTarget: demo,
-});
 export default {
-  directives: {
-    drag: dragDirective,
-  },
   components: {
     HalfCircleSpinner,
     AtomSpinner,
@@ -171,6 +174,7 @@ export default {
       price2: "#009f16",
       loading: false,
       slider: 80,
+      year: new Date().getFullYear(),
     };
   },
   created() {

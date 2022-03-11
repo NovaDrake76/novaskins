@@ -1,6 +1,6 @@
 <script>
-import Home from "./components/Home.vue";
-import Market from "./components/Market.vue";
+import Home from "./pages/Home.vue";
+import Market from "./pages/Market.vue";
 
 const routes = {
   "/": Home,

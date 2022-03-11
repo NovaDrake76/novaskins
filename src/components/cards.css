@@ -1,0 +1,36 @@
+.card {
+  width: 250px;
+  height: 290px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #0f0f0fd0;
+  color: white;
+}
+
+.cardImage {
+  background-image: url("/imageCoverBackground.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px 12px 0 0;
+  object-fit: scale-down;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.cardImage:hover {
+  background-color: #494949;
+}
+
+.cardImageCover {
+  width: 15vw;
+  object-fit: scale-down;
+  transition: transform 0.2s;
+}
+
+.cardImageCover:hover {
+  transform: rotate(5deg);
+}
+
+.cardContent {
+  padding: 8px;
+}
