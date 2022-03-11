@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="weapons">
+        <div class="weapons" ref="demo" v-drag="dragHandler">
           <div
             class="containerCards"
             v-for="skin in skins.results"
@@ -82,10 +82,11 @@
         <div class="degrade" />
       </div>
       <div class="containerParallax">
-        <h1 class="titleParallax" style="margin-right: 10%">
-          Track the <br />
-          bests discounts
-        </h1>
+        <div class="parallaxTextBackground">
+          <h1 class="titleParallax" style="line-height: 100%">
+            Track the bests discounts
+          </h1>
+        </div>
       </div>
       <div class="containerBottom">
         <div class="bottomText">
@@ -132,8 +133,32 @@
 
 <script>
 import { HalfCircleSpinner, AtomSpinner } from "epic-spinners";
+import { dragDirective, useDrag } from "@vueuse/gesture";
+import { ref } from "vue";
 
+const demo = ref();
+
+const dragHandler = ({ movement: [x, y], dragging }) => {
+  if (!dragging) {
+    set({ x: 0, y: 0, cursor: "grab" });
+    return;
+  }
+
+  set({
+    cursor: "grabbing",
+    x,
+    y,
+  });
+};
+
+// Composable usage
+useDrag(dragHandler, {
+  domTarget: demo,
+});
 export default {
+  directives: {
+    drag: dragDirective,
+  },
   components: {
     HalfCircleSpinner,
     AtomSpinner,

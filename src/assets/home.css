@@ -124,15 +124,18 @@ a {
   height: 290px;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  background-color: #252525;
+  background-color: #0f0f0fd0;
   color: white;
 }
 
 .cardImage {
-  background-color: #2b2b2b;
+  background-image: url("/imageCoverBackground.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 12px 12px 0 0;
   object-fit: scale-down;
   text-align: center;
+  transition: background-color 0.3s;
 }
 
 .cardImage:hover {
@@ -142,6 +145,12 @@ a {
 .cardImageCover {
   width: 15vw;
   object-fit: scale-down;
+  transition: transform 0.2s;
+}
+
+.cardImageCover:hover {
+  scale: 1.2;
+  transform: rotate(5deg);
 }
 
 .cardContent {
@@ -160,10 +169,24 @@ a {
   color: #fff;
 }
 
+/* .parallaxTextBackground {
+  width: 35%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #487eb0;
+  color: white;
+  border: 3px solid #009f16;
+  border-radius: 7px;
+} */
+
 .titleParallax {
-  font-size: 90px;
-  text-align: end;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  font-size: 60px;
+  font-weight: bolder;
+  text-align: center;
+  text-shadow: 3px 3px 0 rgba(36, 36, 36, 0.4);
+  margin-right: 1%;
 }
 
 .containerBottom {
@@ -368,6 +391,11 @@ a {
   .sliderImages {
     width: 60vw;
     height: 70vw;
+  }
+
+  .cardImageCover {
+    height: 25vh;
+    width: 100%;
   }
 }
 
