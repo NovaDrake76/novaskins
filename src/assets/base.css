@@ -95,6 +95,11 @@ footer {
   background-attachment: fixed;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .footerTop {
   height: 35%;
   display: flex;
@@ -108,11 +113,28 @@ footer {
 }
 
 .footerBottom {
-  width: 90%;
+  width: 80%;
   height: 55%;
   display: flex;
   justify-content: space-between;
+  padding-top: 20px;
   border-top: 1px solid rgba(97, 97, 97, 0.26);
+}
+
+.footerInfoContainerPayment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerInfoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerTitle {
+  color: #009f16;
+  font-weight: bold;
 }
 
 .footerEnd {

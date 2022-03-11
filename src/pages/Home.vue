@@ -143,11 +143,42 @@
           </p>
         </div>
         <div class="footerBottom">
-          <div>a</div>
-          <div>b</div>
-          <div>c</div>
-          <div>d</div>
-          <div>e</div>
+          <div class="footerInfoContainer">
+            <h3 class="footerTitle">TERMS</h3>
+            <p>Terms of use</p>
+            <p>Privacy policy</p>
+            <p>Price policy</p>
+            <p>Skin upgrade</p>
+          </div>
+          <div class="footerInfoContainer">
+            <h3 class="footerTitle">MAIN</h3>
+            <p>Trade</p>
+            <p>Store</p>
+            <p>Antiscam</p>
+            <p>Boxes</p>
+          </div>
+          <div class="footerInfoContainer">
+            <h3 class="footerTitle">ADDITIONAL</h3>
+            <p>Item Status</p>
+            <p>FAQ</p>
+            <p>Trade help</p>
+          </div>
+          <div class="footerInfoContainer">
+            <h3 class="footerTitle">CONTACT</h3>
+            <p><a href="mailto:novadrake76@gmail.com">Mail us</a></p>
+            <p>
+              <a
+                target="”_blank”"
+                href="https://discord.com/channels/@me/830191630069137459"
+                >Discord us</a
+              >
+            </p>
+          </div>
+          <div class="footerInfoContainerPayment">
+            <h3 class="footerTitle">PAYMENT FORMS</h3>
+            <img src="/pix.webp" alt="pix" width="150" />
+            <img src="/cartoes.webp" alt="cartoes" />
+          </div>
         </div>
         <div class="footerEnd">
           NovaSkins Comercio De Jogos E Skins Ltda - CNPJ: 40.981.116/0001-73 ©
@@ -160,11 +191,13 @@
 
 <script>
 import { HalfCircleSpinner, AtomSpinner } from "epic-spinners";
+import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
 
 export default {
   components: {
     HalfCircleSpinner,
     AtomSpinner,
+    EmailOutline,
   },
   data() {
     return {
