@@ -1,6 +1,5 @@
 .card {
   width: 250px;
-  height: 290px;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   background-color: #0f0f0fd0;
@@ -33,4 +32,28 @@
 
 .cardContent {
   padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.skinName {
+  height: 80%;
+  min-height: 10vh;
+}
+
+.skinsInformations {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.priceSkin {
+  display: flex;
+  width: 100%;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  font-size: 20px;
+  color: #009f16;
 }

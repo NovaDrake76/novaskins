@@ -114,7 +114,7 @@
         </div>
         <div v-else class="skinsContainer">
           <div class="skins" v-for="skin in skins.results" :key="skin">
-            <div class="cardSkins">
+            <div class="card">
               <div class="cardImage">
                 <img
                   class="cardImageCover"
@@ -124,17 +124,19 @@
                     '/fxf'
                   "
                   alt="skin"
-                  style="object-fit: scale-down"
+                  width="300"
                 />
               </div>
               <div class="cardContent">
-                <h3>{{ skin.name }}</h3>
-                <p>
-                  Listings: <b>{{ skin.sell_listings }}</b>
-                </p>
-                <p>
-                  Starting at: <b>{{ skin.sell_price_text }}</b>
-                </p>
+                <div class="skinsInformations">
+                  <h3 class="skinName">{{ skin.name }}</h3>
+                  <p class="skinPrice">
+                    Listings: <b>{{ skin.sell_listings }}</b>
+                  </p>
+                </div>
+              </div>
+              <div class="priceSkin">
+                <b>{{ skin.sell_price_text }}</b>
               </div>
             </div>
           </div>
@@ -275,6 +277,7 @@ input[type="number"] {
   height: 100%;
   background-color: #141414;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .skinsContainer {
@@ -307,16 +310,6 @@ input[type="number"] {
 .skins {
   display: flex;
   padding-bottom: 10px;
-}
-
-.cardSkins {
-  width: 260px;
-  height: 300px;
-  border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  background-color: #252525;
-  color: white;
-  object-fit: scale-down;
 }
 
 .sidebarContainer {

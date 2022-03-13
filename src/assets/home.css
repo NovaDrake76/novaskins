@@ -198,8 +198,15 @@ a {
   margin-top: 8%;
 }
 
-.sellImage {
+.sellImageContainer {
   width: 30%;
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(closest-side, #7a344d -800px, #181818);
+}
+
+.sellImage {
+  width: 100%;
   transition: transform 0.2s;
 }
 
@@ -384,18 +391,29 @@ a {
 
   .containerBottom {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-left: 20px;
   }
 
   .sliderImages {
-    width: 60vw;
+    width: 40vw;
     height: 70vw;
   }
 
   .cardImageCover {
     height: 25vh;
     width: 100%;
+  }
+  .title {
+    font-size: 40px;
+  }
+
+  .subTitle {
+    font-size: 20px;
+  }
+
+  .subTitleRight {
+    font-size: 20px;
   }
 }
 

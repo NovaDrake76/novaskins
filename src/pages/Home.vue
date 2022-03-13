@@ -69,13 +69,15 @@
                 />
               </div>
               <div class="cardContent">
-                <h3>{{ skin.name }}</h3>
-                <p>
-                  Listings: <b>{{ skin.sell_listings }}</b>
-                </p>
-                <p>
-                  Starting at: <b>{{ skin.sell_price_text }}</b>
-                </p>
+                <div class="skinsInformations">
+                  <h3 class="skinName">{{ skin.name }}</h3>
+                  <p class="skinPrice">
+                    Listings: <b>{{ skin.sell_listings }}</b>
+                  </p>
+                </div>
+              </div>
+              <div class="priceSkin">
+                <b>{{ skin.sell_price_text }}</b>
               </div>
             </div>
           </div>
@@ -125,7 +127,9 @@
           </div>
         </div>
         <div class="sellInfo">
-          <img class="sellImage" src="/karambit.webp" alt="karambit" />
+          <div class="sellImageContainer">
+            <img class="sellImage" src="/karambit.webp" alt="karambit" />
+          </div>
           <div class="midText">
             <h1 class="title">Sell? Hold?</h1>
             <div class="subTitleRight">
