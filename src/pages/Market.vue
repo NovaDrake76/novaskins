@@ -1,5 +1,27 @@
 <template>
   <section>
+    <div v-if="modalOpen == true" class="modalContainer">
+      <div class="modal">
+        <div class="modalTop" @click="modalOpen = false">X</div>
+        <div class="modalBottom">
+          <div class="modalImageContainer">
+            <img
+              class="modalImage"
+              v-bind:src="`https://community.akamai.steamstatic.com/economy/image/${skinDataAUX.image}/fxf`"
+              alt="skin"
+            />
+          </div>
+          <div class="modalInfoContainer">
+            <h1 class="skinTitles">{{ skinDataAUX.name }}</h1>
+            <h2>Volume: {{ skinData.volume }}</h2>
+            <h2>Median price: {{ skinData.median_price }}</h2>
+            <h1 class="skinTitles">
+              Lowest price: {{ skinData.lowest_price }}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="market">
       <div class="marketTop">
         <a href="#/"><img src="/logo.webp" alt="logo" width="150" /></a>
@@ -113,7 +135,17 @@
           />
         </div>
         <div v-else class="skinsContainer">
-          <div class="skins" v-for="skin in skins.results" :key="skin">
+          <div
+            class="skins"
+            v-for="skin in skins.results"
+            :key="skin"
+            @click="
+              (skinDataAUX.name = skin.name),
+                (skinDataAUX.image = skin.asset_description.icon_url),
+                fetchSkin(),
+                (modalOpen = true)
+            "
+          >
             <div class="card">
               <div class="cardImage">
                 <img
@@ -172,6 +204,9 @@ export default {
       stickersURL: "CSGO_Tool_Sticker",
       agentsURL: "Type_CustomPlayer",
       search: "",
+      modalOpen: false,
+      skinData: [],
+      skinDataAUX: [{ name: "", image: "" }],
     };
   },
   created() {
@@ -205,12 +240,23 @@ export default {
         console.log(error);
       }
     },
+    async fetchSkin() {
+      try {
+        const responseSkin = await fetch(
+          `https://skinky.herokuapp.com/https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=${this.skinDataAUX.name}`
+        );
+        this.skinData = await responseSkin.json();
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>
 
 <style>
 @import url("../assets/home.css");
+@import url("../components/modal.css");
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
