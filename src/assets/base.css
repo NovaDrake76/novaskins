@@ -79,7 +79,9 @@ body::-webkit-scrollbar {
 }
 
 footer {
-  height: 80vh;
+  height: 55vh;
+  max-height: 600px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,6 +95,8 @@ footer {
     url("/backgroundFooter.webp");
   background-position: center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -109,12 +113,13 @@ a {
 }
 
 .logoFooter {
-  height: 20vh;
+  height: 5vh;
+  min-height: 100px;
 }
 
 .footerBottom {
   width: 80%;
-  height: 55%;
+  margin-bottom: 5vh;
   display: flex;
   justify-content: space-between;
   padding-top: 20px;

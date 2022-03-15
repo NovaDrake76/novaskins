@@ -404,5 +404,6 @@ input[type="number"] {
 
 .sidebarButton:hover {
   color: white;
+  cursor: pointer;
 }
 </style>

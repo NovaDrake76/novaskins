@@ -207,6 +207,7 @@ a {
 
 .sellImage {
   width: 100%;
+  max-width: 512px;
   transition: transform 0.2s;
 }
 
@@ -275,6 +276,7 @@ a {
   background-image: url("/m4a4.webp");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   transition: ease-in-out 0.3s;
   z-index: 2;
 }

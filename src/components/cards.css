@@ -4,6 +4,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   background-color: #0f0f0fd0;
   color: white;
+  cursor: pointer;
 }
 
 .cardImage {
