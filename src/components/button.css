@@ -15,5 +15,11 @@
 
   .btnMarket[disabled]{
     background-color: gray;
+  }
 
+  @media only screen and (max-width: 800px){
+    .btnMarket{
+      width: 20vw;
+      font-size: 2.5vw;
+    }
   }

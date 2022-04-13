@@ -392,15 +392,19 @@ a {
     width: 100%;
   }
   .title {
-    font-size: 40px;
+    font-size: 8vw;
   }
 
   .subTitle {
-    font-size: 20px;
+    font-size: 5vw;
   }
 
   .subTitleRight {
-    font-size: 20px;
+    font-size: 5vw;
+  }
+
+  .sellImageContainer{
+    width: 50%;
   }
 }
 
