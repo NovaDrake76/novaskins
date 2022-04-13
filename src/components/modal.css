@@ -1,3 +1,5 @@
+@import url("../components/button.css");
+
 .modalContainer {
   width: 100vw;
   height: 100vh;
@@ -42,7 +44,7 @@
   object-fit: scale-down;
   display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
   background-image: url("/imageCoverBackground.webp");
   background-position: center;
   background-size: cover;
@@ -68,5 +70,19 @@
 }
 
 .skinTitles {
-  font-size: 40px;
+  font-size: 3vw;
+}
+
+.buttonsContainer{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 800px){
+  .modalBottom{
+    display: flex;
+    flex-direction: column;
+  }
 }

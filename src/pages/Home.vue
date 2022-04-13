@@ -251,4 +251,5 @@ export default {
 
 <style>
 @import url("../assets/home.css");
+@import url("../components/button.css");
 </style>

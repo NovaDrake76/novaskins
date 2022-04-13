@@ -1,10 +1,12 @@
 <script>
 import Home from "./pages/Home.vue";
 import Market from "./pages/Market.vue";
+import Drop from "./pages/Drop.vue";
 
 const routes = {
   "/": Home,
   "/market": Market,
+  "/drop": Drop,
 };
 
 export default {

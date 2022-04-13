@@ -18,13 +18,24 @@
             <h1 class="skinTitles">
               Lowest price: {{ skinData.lowest_price }}
             </h1>
+            <div class="buttonsContainer">
+              <a
+                v-bind:href="`https://steamcommunity.com/market/listings/730/${skinDataAUX.name}`"
+                target="_blank"
+              >
+                <button class="btnMarket">See on Steam</button></a
+              >
+              <button class="btnMarket" disabled>See on NovaSkins</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="market">
       <div class="marketTop">
-        <a href="#/"><img src="/logo.webp" alt="logo" width="150" /></a>
+        <a class="logoContainer" href="#/"
+          ><img class="logo" src="/logo.webp" alt="logo"
+        /></a>
         <div class="inputContainer">
           <magnify style="display: flex; align-self: center; padding: 5px" />
           <input
@@ -268,6 +279,16 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.logoContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+}
+
 .market {
   display: flex;
   flex-direction: column;
@@ -405,5 +426,15 @@ input[type="number"] {
 .sidebarButton:hover {
   color: white;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .logo {
+    width: 50px;
+  }
+
+  .sidebarContainer {
+    display: none;
+  }
 }
 </style>

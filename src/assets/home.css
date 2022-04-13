@@ -54,21 +54,6 @@ a {
   color: white;
 }
 
-.btnMarket {
-  display: flex;
-  align-self: flex-start;
-  align-items: center;
-  justify-content: center;
-  width: 160px;
-  height: 40px;
-  margin-top: 12px;
-  background-color: #009f16;
-  border-radius: 8px;
-  border: none;
-  color: white;
-  font-size: large;
-}
-
 .containerMid {
   display: flex;
   flex-direction: column;
