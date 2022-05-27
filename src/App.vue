@@ -2,11 +2,13 @@
 import Home from "./pages/Home.vue";
 import Market from "./pages/Market.vue";
 import Drop from "./pages/Drop.vue";
+import Tracker from "./pages/Tracker.vue";
 
 const routes = {
   "/": Home,
   "/market": Market,
   "/drop": Drop,
+  "/tracker": Tracker,
 };
 
 export default {
