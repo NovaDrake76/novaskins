@@ -525,6 +525,11 @@ vue-axios-cors@^1.0.1:
     qs "^6.9.1"
     vue "^2.6.10"
 
+vue-country-flag-next@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/vue-country-flag-next/-/vue-country-flag-next-2.3.2.tgz"
+  integrity sha512-Lv12L1VTwlBgizpZ3xPEPO3zuIETaJmeSiPuLOWLLgu2EakwU/o72iKYiKcdZ6BXiSkfss+Ski5fDzjuxZ1DcA==
+
 vue-demi@*:
   version "0.12.5"
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.12.5.tgz"

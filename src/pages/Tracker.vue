@@ -19,33 +19,57 @@
     </div>
     <div v-else class="container">
       <div class="playerGeralInfo">
+        <img
+          :src="playerSteamInfo.response.players[0].avatarfull"
+          alt="Player Avatar"
+          class="playerAvatar"
+        />
         <div class="infoHead">
-          <img
-            :src="playerSteamInfo.response.players[0].avatarfull"
-            alt="Player Avatar"
-            class="playerAvatar"
-          />
-          <h1 class="PlayerName">
-            {{ playerSteamInfo.response.players[0].personaname }}
-          </h1>
+          <div class="infoTop">
+            <div class="infoTopContainer">
+              <h1 class="PlayerName">
+                {{ playerSteamInfo.response.players[0].personaname }}
+              </h1>
+              <img
+                :src="
+                  `ranks/` + playerInfo.playerstats.stats[205].value + `.webp`
+                "
+                class="PlayerRank"
+                alt="Player Rank"
+              />
+            </div>
+          </div>
+          <div class="subInfoP">
+            <p>
+              {{ playerInfo.playerstats.stats[0].value.toLocaleString() }}
+              Kills
+            </p>
+            <p>
+              K/D:
+              {{
+                (
+                  playerInfo.playerstats.stats[0].value /
+                  playerInfo.playerstats.stats[1].value
+                ).toFixed(2)
+              }}
+            </p>
+            <p>
+              Precision:
+              {{
+                (
+                  (playerInfo.playerstats.stats[42].value * 100) /
+                  playerInfo.playerstats.stats[43].value
+                ).toFixed(2)
+              }}
+              %
+            </p>
+          </div>
         </div>
       </div>
-      <div>
-        Total Kills:
-        {{ playerInfo.playerstats.stats[0].value.toLocaleString() }}
-      </div>
+
       <div>
         Total Deaths:
         {{ playerInfo.playerstats.stats[1].value.toLocaleString() }}
-      </div>
-      <div>
-        K/D:
-        {{
-          (
-            playerInfo.playerstats.stats[0].value /
-            playerInfo.playerstats.stats[1].value
-          ).toFixed(2)
-        }}
       </div>
 
       <div>
@@ -337,11 +361,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.statsInfo {
-  width: 100%;
-  height: 100%;
+  padding: 30px;
 }
 
 .playerGeralInfo {
@@ -354,10 +374,14 @@ export default {
 }
 
 .infoHead {
-  height: 120px;
   width: 50%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.infoTopContainer {
+  display: flex;
 }
 
 .playerAvatar {
@@ -366,10 +390,19 @@ export default {
   border: 4px solid white;
 }
 
+.PlayerRank {
+  width: 96px;
+}
+
+.subInfoP {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
 .PlayerName {
   font-size: 30px;
   font-weight: bold;
   color: white;
-  margin-left: 20px;
 }
 </style>
