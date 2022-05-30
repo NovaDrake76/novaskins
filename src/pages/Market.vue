@@ -32,25 +32,7 @@
       </div>
     </div>
     <div class="market">
-      <div class="marketTop">
-        <a class="logoContainer" href="#/"
-          ><img class="logo" src="/logo.webp" alt="logo"
-        /></a>
-        <div class="inputContainer">
-          <magnify style="display: flex; align-self: center; padding: 5px" />
-          <input
-            v-model="search"
-            @change="fetchData()"
-            class="marketSearch"
-            type="text"
-            placeholder="Search"
-          />
-        </div>
-        <div class="userContent">
-          <bell-outline /> <cart-outline />
-          <img src="/avatar.webp" alt="user avatar" class="userAvatar" />
-        </div>
-      </div>
+      <Navbar />
       <div class="marketMid">
         <div class="sidebarContainer">
           <div class="sidebar">
@@ -191,16 +173,11 @@
 
 <script>
 import { HalfCircleSpinner } from "epic-spinners";
-import BellOutline from "vue-material-design-icons/BellOutline.vue";
-import CartOutline from "vue-material-design-icons/CartOutline.vue";
-import Magnify from "vue-material-design-icons/Magnify.vue";
+import Navbar from "../components/Navbar.vue";
 
 export default {
   components: {
-    HalfCircleSpinner,
-    BellOutline,
-    CartOutline,
-    Magnify,
+    Navbar,
   },
   data() {
     return {
@@ -294,46 +271,6 @@ input[type="number"] {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-}
-
-.marketTop {
-  display: flex;
-  height: 20vh;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.inputContainer {
-  width: 40%;
-  height: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #44444b;
-  border-radius: 4px;
-}
-
-.marketSearch {
-  width: 100%;
-  color: white;
-  border: none;
-  outline: none;
-  background-color: transparent;
-}
-
-.userContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 10%;
-  height: 100%;
-}
-
-.userAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  object-fit: cover;
 }
 
 .marketMid {

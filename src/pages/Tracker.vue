@@ -1,5 +1,7 @@
 <template>
   <section>
+    <Navbar />
+
     <div
       v-if="loading == true"
       class="loading"
@@ -19,50 +21,114 @@
     </div>
     <div v-else class="container">
       <div class="playerGeralInfo">
-        <img
-          :src="playerSteamInfo.response.players[0].avatarfull"
-          alt="Player Avatar"
-          class="playerAvatar"
-        />
-        <div class="infoHead">
-          <div class="infoTop">
-            <div class="infoTopContainer">
-              <h1 class="PlayerName">
-                {{ playerSteamInfo.response.players[0].personaname }}
-              </h1>
-              <img
-                :src="
-                  `ranks/` + playerInfo.playerstats.stats[205].value + `.webp`
-                "
-                class="PlayerRank"
-                alt="Player Rank"
-              />
+        <div class="infoLeft">
+          <div class="playerInfo">
+            <img
+              :src="playerSteamInfo.response.players[0].avatarfull"
+              alt="Player Avatar"
+              class="playerAvatar"
+            />
+            <div class="infoHead">
+              <div class="infoTop">
+                <div class="infoTopContainer">
+                  <h1 class="PlayerName">
+                    {{ playerSteamInfo.response.players[0].personaname }}
+                  </h1>
+                  <img
+                    :src="
+                      `ranks/` +
+                      playerInfo.playerstats.stats[205].value +
+                      `.webp`
+                    "
+                    class="PlayerRank"
+                    alt="Player Rank"
+                  />
+                </div>
+              </div>
+              <div class="subInfoP">
+                <p>
+                  {{ playerInfo.playerstats.stats[0].value.toLocaleString() }}
+                  Kills
+                </p>
+                <p>
+                  K/D:
+                  {{
+                    (
+                      playerInfo.playerstats.stats[0].value /
+                      playerInfo.playerstats.stats[1].value
+                    ).toFixed(2)
+                  }}
+                </p>
+                <p>
+                  Precision:
+                  {{
+                    (
+                      (playerInfo.playerstats.stats[42].value * 100) /
+                      playerInfo.playerstats.stats[43].value
+                    ).toFixed(2)
+                  }}
+                  %
+                </p>
+              </div>
             </div>
           </div>
-          <div class="subInfoP">
-            <p>
-              {{ playerInfo.playerstats.stats[0].value.toLocaleString() }}
-              Kills
-            </p>
-            <p>
-              K/D:
-              {{
-                (
-                  playerInfo.playerstats.stats[0].value /
-                  playerInfo.playerstats.stats[1].value
-                ).toFixed(2)
-              }}
-            </p>
-            <p>
-              Precision:
-              {{
-                (
-                  (playerInfo.playerstats.stats[42].value * 100) /
-                  playerInfo.playerstats.stats[43].value
-                ).toFixed(2)
-              }}
-              %
-            </p>
+          <div class="lastMatch">
+            <h2>Last Match Info:</h2>
+            <div class="lastMatchInfo">
+              <div class="lastMatchText">
+                <h2>
+                  {{ playerInfo.playerstats.stats[84].value.toLocaleString() }}
+                </h2>
+                <span> Kills</span>
+              </div>
+              <div class="lastMatchText">
+                <h2>
+                  {{ playerInfo.playerstats.stats[85].value.toLocaleString() }}
+                </h2>
+                <span>Deaths</span>
+              </div>
+            </div>
+
+            <div class="lastMatchInfo">
+              <div class="lastMatchText">
+                <h2>
+                  {{
+                    Math.round(
+                      (playerInfo.playerstats.stats[84].value /
+                        playerInfo.playerstats.stats[85].value) *
+                        100
+                    ) / 100
+                  }}
+                </h2>
+                <span>K/D</span>
+              </div>
+              <div class="lastMatchText">
+                <h2>
+                  {{ playerInfo.playerstats.stats[86].value.toLocaleString() }}
+                </h2>
+                <span>MVP's</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="infoRight">
+          <div class="barChartContainer">
+            <apexchart
+              width="80%"
+              height="100%"
+              type="bar"
+              :options="chartOptions"
+              :series="series"
+            ></apexchart>
+          </div>
+          <div class="radarChartContainer">
+            <apexchart
+              width="80%"
+              height="100%"
+              type="radar"
+              :options="chartOptions"
+              :series="series"
+            ></apexchart>
           </div>
         </div>
       </div>
@@ -310,51 +376,71 @@
 </template>
 
 <script>
-import { HalfCircleSpinner } from "epic-spinners"
+import { HalfCircleSpinner } from "epic-spinners";
+import Navbar from "../components/Navbar.vue";
+import VueApexCharts from "vue3-apexcharts";
 
 export default {
   components: {
     HalfCircleSpinner,
+    Navbar,
+    apexchart: VueApexCharts,
   },
   data() {
     return {
       loading: false,
       playerSteamInfo: [],
       playerInfo: [],
-    }
+      chartOptions: {
+        chart: {
+          id: "vuechart-example",
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        },
+      },
+      series: [
+        {
+          name: "series-1",
+          data: [30, 40, 35, 50, 49, 60, 70, 91],
+        },
+      ],
+    };
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
 
   methods: {
     async fetchData() {
-      this.loading = true
+      this.loading = true;
       try {
         const response = await fetch(
           "https://skinky.herokuapp.com/http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?appid=730&key=708CFC659DA8AF1B52841691D92B69AF&steamid=76561198360105612"
-        )
+        );
 
-        this.playerInfo = await response.json()
-        this.loading = false
+        this.playerInfo = await response.json();
+        this.loading = false;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
       try {
         const responseUser = await fetch(
           "https://skinky.herokuapp.com/https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=708CFC659DA8AF1B52841691D92B69AF&format=json&steamids=76561198360105612"
-        )
+        );
 
-        this.playerSteamInfo = await responseUser.json()
+        this.playerSteamInfo = await responseUser.json();
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
   },
-}
+};
 </script>
 
 <style>
+@import url("../components/playerInfo.css");
+
 .container {
   height: auto;
   width: 100vw;
@@ -362,47 +448,8 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 30px;
-}
-
-.playerGeralInfo {
-  height: 250px;
-  width: 80%;
-  padding: 20px;
-  display: flex;
-  border-radius: 8px;
-  background-image: linear-gradient(#5d79ae, #253045);
-}
-
-.infoHead {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-}
-
-.infoTopContainer {
-  display: flex;
-}
-
-.playerAvatar {
-  max-height: 100px;
-  border-radius: 100%;
-  border: 4px solid white;
-}
-
-.PlayerRank {
-  width: 96px;
-}
-
-.subInfoP {
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-}
-
-.PlayerName {
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
+  background-image: url("/back.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

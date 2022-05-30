@@ -1,0 +1,99 @@
+
+
+.playerGeralInfo {
+  height: 380px;
+  width: clamp(600px, 60%, 1280px);
+  padding: 20px;
+  display: flex;
+  border-radius: 8px;
+  background-image: linear-gradient(#5d79ae, #253045);
+}
+
+.infoLeft{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.playerInfo{
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+
+.infoHead {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.infoTopContainer {
+  display: flex;
+}
+
+.playerAvatar {
+  max-height: 100px;
+  border-radius: 100%;
+  border: 4px solid white;
+}
+
+.PlayerRank {
+  width: 96px;
+}
+
+.subInfoP {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.PlayerName {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.lastMatch{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 20px 0 0 10%;
+}
+
+.lastMatchInfo{
+  display: flex;
+  justify-content: space-between;  
+
+}
+
+.lastMatchText{
+
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  padding: 10px
+  
+}
+
+.lastMatchText h2{
+  font-weight: bold !important;;
+  font-size:30px;
+  
+}
+
+.infoRight{
+  display: flex;
+  flex-direction: column;  align-items: center;
+}
+
+.barChartContainer{
+  height: 50%;
+}
+
+.radarChartContainer{
+  height: 50%;
+  align-items: center;
+}
