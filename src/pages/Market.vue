@@ -62,54 +62,55 @@
             </div>
             <button
               class="sidebarButton"
-              @click="(url = knifeURL), fetchDataFiltered()"
+              @click=";(url = knifeURL), fetchDataFiltered()"
             >
               Knifes
             </button>
             <button
               class="sidebarButton"
-              @click="(url = glovesURL), fetchDataFiltered()"
+              @click=";(url = glovesURL), fetchDataFiltered()"
             >
               Gloves
             </button>
             <button
               class="sidebarButton"
-              @click="(url = riflesURL), fetchDataFiltered()"
+              @click=";(url = riflesURL), fetchDataFiltered()"
             >
               Rifles
             </button>
             <button
               class="sidebarButton"
-              @click="(url = pistolsURL), fetchDataFiltered()"
+              @click=";(url = pistolsURL), fetchDataFiltered()"
             >
               Pistols
             </button>
             <button
               class="sidebarButton"
-              @click="(url = smgURL), fetchDataFiltered()"
+              @click=";(url = smgURL), fetchDataFiltered()"
             >
               SMG
             </button>
             <button
               class="sidebarButton"
-              @click="(url = shotgunsURL), fetchDataFiltered()"
+              @click=";(url = shotgunsURL), fetchDataFiltered()"
             >
               Shotguns
             </button>
             <button
               class="sidebarButton"
-              @click="(url = stickersURL), fetchDataFiltered()"
+              @click=";(url = stickersURL), fetchDataFiltered()"
             >
               Stickers
             </button>
             <button
               class="sidebarButton"
-              @click="(url = agentsURL), fetchDataFiltered()"
+              @click=";(url = agentsURL), fetchDataFiltered()"
             >
               Agents
             </button>
           </div>
         </div>
+        <div>Sorry guys, but Heroku closed our market</div>
         <div
           v-if="loading == true"
           class="loading"
@@ -133,12 +134,13 @@
             v-for="skin in skins.results"
             :key="skin"
             @click="
-              (skinDataAUX.name = skin.name),
+              ;(skinDataAUX.name = skin.name),
                 (skinDataAUX.image = skin.asset_description.icon_url),
                 fetchSkin(),
                 (modalOpen = true)
             "
           >
+            asdasd
             <div class="card">
               <div class="cardImage">
                 <img
@@ -172,8 +174,8 @@
 </template>
 
 <script>
-import { HalfCircleSpinner } from "epic-spinners";
-import Navbar from "../components/Navbar.vue";
+import { HalfCircleSpinner } from "epic-spinners"
+import Navbar from "../components/Navbar.vue"
 
 export default {
   components: {
@@ -195,51 +197,51 @@ export default {
       modalOpen: false,
       skinData: [],
       skinDataAUX: [{ name: "", image: "" }],
-    };
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
 
   methods: {
     async fetchData() {
-      this.loading = true;
+      this.loading = true
       try {
         const response = await fetch(
           `https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&appid=730&norender=1&count=500`
-        );
+        )
 
-        this.skins = await response.json();
-        this.loading = false;
+        this.skins = await response.json()
+        this.loading = false
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     },
     async fetchDataFiltered() {
-      this.loading = true;
+      this.loading = true
       try {
         const responseFilteder = await fetch(
           `https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/search?&category_730_ItemSet%5B%5D=any&category_730_ProPlayer%5B%5D=any&category_730_StickerCapsule%5B%5D=any&category_730_TournamentTeam%5B%5D=any&category_730_Weapon%5B%5D=any&category_730_Type%5B%5D=tag_${this.url}&norender=1&count=500`
-        );
+        )
 
-        this.skins = await responseFilteder.json();
-        this.loading = false;
+        this.skins = await responseFilteder.json()
+        this.loading = false
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     },
     async fetchSkin() {
       try {
         const responseSkin = await fetch(
           `https://skinky.herokuapp.com/https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=${this.skinDataAUX.name}`
-        );
-        this.skinData = await responseSkin.json();
+        )
+        this.skinData = await responseSkin.json()
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     },
   },
-};
+}
 </script>
 
 <style>

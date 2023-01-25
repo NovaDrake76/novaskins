@@ -38,11 +38,11 @@
             <div class="container__image">
               <div class="container__info">
                 Lowest Price:
-                <span :style="{ color: price1 }">{{ neo.lowest_price }}</span>
+                <span :style="{ color: price1 }">"$6.16"</span>
               </div>
               <div class="container__info container__moreInfo">
                 Median Price:
-                <span :style="{ color: price2 }">{{ neo.median_price }}</span>
+                <span :style="{ color: price2 }">$6.80</span>
               </div>
             </div>
           </div>
@@ -194,8 +194,8 @@
 </template>
 
 <script>
-import { HalfCircleSpinner, AtomSpinner } from "epic-spinners";
-import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
+import { HalfCircleSpinner, AtomSpinner } from "epic-spinners"
+import EmailOutline from "vue-material-design-icons/EmailOutline.vue"
 
 export default {
   components: {
@@ -212,41 +212,41 @@ export default {
       loading: false,
       slider: 80,
       year: new Date().getFullYear(),
-    };
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
 
   methods: {
     async fetchData() {
-      this.loading = true;
+      this.loading = false
       try {
         const response = await fetch(
-          "https://skinky.herokuapp.com/https://steamcommunity.com/market/search/render/?search_descriptions=0&sort_column=default&sort_dir=desc&appid=730&norender=1&count=50"
-        );
+          "https://steamcommunity.com/market/search/render/?search_descriptions=0&sort_column=default&sort_dir=desc&appid=730&norender=1&count=50"
+        )
 
         const responseNeo = await fetch(
-          "https://skinky.herokuapp.com/https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=M4A4%20|%20Neo-Noir%20%28Field-Tested%29"
-        );
+          "/https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=M4A4%20|%20Neo-Noir%20%28Field-Tested%29"
+        )
 
-        this.skins = await response.json();
-        this.neo = await responseNeo.json();
+        this.skins = await response.json()
+        this.neo = await responseNeo.json()
         if (this.neo.lowest_price < this.neo.median_price) {
-          this.price1 = "#009f16";
-          this.price2 = "#d63031";
+          this.price1 = "#009f16"
+          this.price2 = "#d63031"
         }
-        this.loading = false;
+        this.loading = false
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     },
     moveDiv() {
-      const weapons = document.getElementById("weapons");
-      weapons.style.transform = "translateX(-200px)";
+      const weapons = document.getElementById("weapons")
+      weapons.style.transform = "translateX(-200px)"
     },
   },
-};
+}
 </script>
 
 <style>
